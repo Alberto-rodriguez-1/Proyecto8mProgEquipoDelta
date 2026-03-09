@@ -1,0 +1,54 @@
+{
+  "realidades": [
+    {
+      "id": 1,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 2,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 3,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 4,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 5,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 6,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 7,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 8,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 9,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    },
+    {
+      "id": 10,
+      "texto": "texto",
+      "fuente": "referencia a la fuente oficial"
+    }
+  ]
+}
