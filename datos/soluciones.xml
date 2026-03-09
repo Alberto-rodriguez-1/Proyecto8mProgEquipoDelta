@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soluciones>
+    <solucion id="1">
+        <meme>Cuando compilas y funciona a la primera</meme>
+        <realidad>Pasaste dos horas revisando errores antes de compilar.</realidad>
+    </solucion>
+    
+    <solucion id="2">
+        <meme>Voy a estudiar solo 30 minutos</meme>
+        <realidad>Terminas viendo videos durante tres horas.</realidad>
+    </solucion>
+    
+    <solucion id="3">
+        <meme>Este ejercicio es fácil</meme>
+        <realidad>Acabas consultando apuntes, internet y al profesor.</realidad>
+    </solucion>
+    
+    <solucion id="4">
+        <meme>Solo voy a cambiar una línea de código</meme>
+        <realidad>Terminas modificando medio programa.</realidad>
+    </solucion>
+    
+    <solucion id="5">
+        <meme>El examen seguro que es sencillo</meme>
+        <realidad>La mitad de las preguntas no las habías visto.</realidad>
+    </solucion>
+    
+    <solucion id="6">
+        <meme>Voy a dormir temprano hoy</meme>
+        <realidad>Te quedas usando el móvil hasta las 2 de la mañana.</realidad>
+    </solucion>
+    
+    <solucion id="7">
+        <meme>Este proyecto se hace en una tarde</meme>
+        <realidad>Necesitas varios días para terminarlo.</realidad>
+    </solucion>
+    
+    <solucion id="8">
+        <meme>No voy a posponer tareas</meme>
+        <realidad>Las haces todas el último día.</realidad>
+    </solucion>
+    
+    <solucion id="9">
+        <meme>Voy a empezar el trabajo con tiempo</meme>
+        <realidad>Empiezas la noche antes de entregarlo.</realidad>
+    </solucion>
+    
+    <solucion id="10">
+        <meme>Este error se arregla rápido</meme>
+        <realidad>Pasas horas buscando la causa.</realidad>
+    </solucion>
+</soluciones>
