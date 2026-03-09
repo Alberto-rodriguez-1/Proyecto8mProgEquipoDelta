@@ -13,7 +13,7 @@
 --TT3 - Definir el formato del fichero de realidades. - Mario 7e91340
 --TT4 - Definir la estructura de datos que albergará las realidades (datos reales). - Mario 7e91340
 --TT5 - Definir el formato del fichero de soluciones. - Alberto e349bfb
---TT6 - Definir la estructura de datos que albergará las soluciones. - Akberto e349bfb
+--TT6 - Definir la estructura de datos que albergará las soluciones. - Alberto e349bfb
 --TT7 - Definir el formato del fichero de resultados.
 --TD1 - Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla.
 --TD2 - Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación.
