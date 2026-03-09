@@ -8,8 +8,8 @@
 --HU8 - El Sistema mostrará la puntuación final alcanzada por el usuario.
 --HU9 - Si al finalizar, la puntuación del usuario se encuentra entre las tres mejores:
 --HU10 - El Sistema muestra la lista con las mejores puntuaciones y el nombres de los usuarios y se despide.
---TT1 - Definir el formato del fichero de memes. -Nica da2f27bdece3adb981f87e85a6915ee7296f9466.
---TT2 - Definir la estructura de datos que albergará los memes.-Nica da2f27bdece3adb981f87e85a6915ee7296f9466.
+--TT1 - Definir el formato del fichero de memes. -Nica da2f27b.
+--TT2 - Definir la estructura de datos que albergará los memes.-Nica da2f27b.
 --TT3 - Definir el formato del fichero de realidades.
 --TT4 - Definir la estructura de datos que albergará las realidades (datos reales).
 --TT5 - Definir el formato del fichero de soluciones.
