@@ -1,0 +1,20 @@
+--HU1 - Al iniciarse la aplicación, el Sistema comprobará si existe el directorio datos con los ficheros: memes.txt, realidades.json y soluciones.xml. 
+--HU2 - El Sistema comprueba si existe en fichero resultados.txt en el directorio resultados.
+--HU3 - El Sistema lee el fichero de memes y genera una estructura de datos (array, lista, mapa...).
+--HU4 - El Sistema lee el fichero de realidades y genera una estructura de datos (array, lista, mapa...).
+--HU5 - El Sistema mostrará al usuario un meme elegido al azar y una lista numerada de realidades.
+---HU6 - El usuario elegirá el dato real (realidad) que desmiente el meme mostrado. Si la respuesta es correcta, ganará un punto.
+--HU7 - El Sistema mostrará el marcador y volverá a mostrar un meme hasta completar 5 memes.
+--HU8 - El Sistema mostrará la puntuación final alcanzada por el usuario.
+--HU9 - Si al finalizar, la puntuación del usuario se encuentra entre las tres mejores:
+--HU10 - El Sistema muestra la lista con las mejores puntuaciones y el nombres de los usuarios y se despide.
+--TT1 - Definir el formato del fichero de memes. -Nica da2f27bdece3adb981f87e85a6915ee7296f9466.
+--TT2 - Definir la estructura de datos que albergará los memes.-Nica da2f27bdece3adb981f87e85a6915ee7296f9466.
+--TT3 - Definir el formato del fichero de realidades.
+--TT4 - Definir la estructura de datos que albergará las realidades (datos reales).
+--TT5 - Definir el formato del fichero de soluciones.
+--TT6 - Definir la estructura de datos que albergará las soluciones.
+--TT7 - Definir el formato del fichero de resultados.
+--TD1 - Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla.
+--TD2 - Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación.
+--TD3 - Manual del Programador, en formato HTML generado automáticamente por la herramienta javadoc.
