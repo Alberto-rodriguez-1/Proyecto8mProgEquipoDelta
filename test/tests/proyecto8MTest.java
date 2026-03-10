@@ -10,7 +10,7 @@ public class Proyecto8MTest {
 			Programa programa =new Programa();
 			assertNotEquals(null, programa);
 	}
-    /* HU2 Test
+    /**  HU2 Test
        Verifica que la función prepararArchivos() crea correctamente 
        la carpeta y el fichero txt.
     */
@@ -21,7 +21,7 @@ public class Proyecto8MTest {
         assertTrue(Files.exists(Paths.get("resultados/resultados.txt")), "El archivo no existe");
     }
 	
-    /* HU1 Test
+    /**  HU1 Test
        Verifica que la función verificarDatos() se ejecute sin errores.
        Nota: Si faltan archivos en 'datos', este test fallará porque el programa se detiene.
     */
