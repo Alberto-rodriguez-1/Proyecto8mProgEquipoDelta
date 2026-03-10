@@ -9,3 +9,4 @@ compilar test
 ejecutar test
 
 ..\jdk-25\bin\java -cp "fuentes/compilados;test/compilados;test/lib/*" org.junit.platform.console.ConsoleLauncher --scan-classpath
+jdk-25\bin\javac -d fuentes/compilados fuentes\Programa.java
