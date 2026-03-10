@@ -1,7 +1,7 @@
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -65,9 +65,17 @@ public class Programa {
     }
 
     /*
-     * HU4 - Lectura de realidades (JSON)
-     * Leemos el archivo realidades.json línea a línea y extraemos 
-     * el ID, el texto y la fuente usando métodos de String.
+     * HU4
+     * Lee el archivo "realidades.json" ubicado en la carpeta datos y
+     * crea una lista de objetos Realidad con la información obtenida.
+     * 
+     * El método recorre cada línea del archivo JSON y extrae los valores
+     * correspondientes a id, texto y fuente. Cuando se han leído los tres
+     * atributos, se crea un objeto Realidad que se añade a la lista.
+     * 
+     * @return una lista de objetos Realidad cargados desde el archivo JSON
+     * 
+     * @throws IOException si ocurre un error al leer el archivo
      */
     public static List<Realidad> leerRealidades() throws IOException {
         List<Realidad> realidades = new ArrayList<>();
