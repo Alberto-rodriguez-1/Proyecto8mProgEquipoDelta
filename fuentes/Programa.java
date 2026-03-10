@@ -1,10 +1,14 @@
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+/**
+	@author : Alberto Rodriguez, Nicanor Gil y Mario Carmona 
+*/
+import java.nio.file.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+	*Esta clase le muestra al usuario un meme y 10, despues le pide que eliga la realidad que crea que sea la que desmiente el meme. Esto lo hace 5 veces y anota las puntuaciones.
+*/
 public class Programa {
 
     public static void main(String[] args) throws IOException {
@@ -83,8 +87,20 @@ public class Programa {
 
         return realidades;
     }
-
-    public static List<String> leerMeme() {
-        return new ArrayList<>();
+    /**
+	 Lee los memes de un fichero
+	 @return Una lista de string conteniendo los memes
+     @throws Exception es una excepcion desconocida
+	*/
+    public static List<String> leerMeme()throws IOException {
+        List <String> resultado= new ArrayList<>();
+        Path path=Paths.get(".."+File.separator+"datos"+File.separator+"memes.txt");
+		List<String> datos=Files.readAllLines(path);
+		for(int i =1;i<datos.size();i++){
+			String[] trozos=datos.get(i).split("|");
+			String meme = trozos[i];
+            resultado.add(meme);
+		}
+        return resultado;
     }
 }
