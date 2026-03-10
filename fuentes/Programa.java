@@ -2,27 +2,30 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Programa {
 
     public static void main(String[] args) throws IOException {
-        // Ejecución de las validaciones iniciales
         verificarDatos();
         prepararArchivos();
+
+        // HU4 - Leer realidades
+        List<Realidad> realidades = leerRealidades();
+        System.out.println("Realidades cargadas: " + realidades.size());
+        for (Realidad r : realidades) {
+            System.out.println(r);
+        }
     }
 
     /*
      * HU1
-     * Comprueba que existen los archivos memes.txt, realidades.json y
-     * soluciones.xml
-     * dentro de la carpeta 'datos'. Si falta alguno, detiene el programa.
      */
     public static void verificarDatos() {
         if (!Files.exists(Paths.get("datos/memes.txt")) ||
                 !Files.exists(Paths.get("datos/realidades.json")) ||
                 !Files.exists(Paths.get("datos/soluciones.xml"))) {
-
             System.out.println("Faltan archivos en datos.");
             System.exit(0);
         }
@@ -30,13 +33,9 @@ public class Programa {
 
     /*
      * HU2
-     * Comprueba que existe el directorio 'resultados' y el fichero
-     * 'resultados.txt'.
-     * Si no existen, los crea automáticamente.
      */
     public static void prepararArchivos() throws IOException {
         Path directorio = Paths.get("resultados");
-        // Usamos resolve para que el fichero siempre esté DENTRO del directorio
         Path fichero = directorio.resolve("resultados.txt");
 
         if (Files.notExists(directorio)) {
@@ -56,7 +55,36 @@ public class Programa {
         }
     }
 
-    public static List<String> leerMeme() {
+    /*
+     * HU4
+     */
+    public static List<Realidad> leerRealidades() throws IOException {
+        List<Realidad> realidades = new ArrayList<>();
+        List<String> lineas = Files.readAllLines(Paths.get("datos/realidades.json"));
 
+        int id = 0;
+        String texto = "";
+        String fuente = "";
+
+        for (String linea : lineas) {
+            linea = linea.trim();
+
+            if (linea.startsWith("\"id\"")) {
+                id = Integer.parseInt(linea.replaceAll("[^0-9]", ""));
+
+            } else if (linea.startsWith("\"texto\"")) {
+                texto = linea.substring(linea.indexOf(":") + 3, linea.lastIndexOf("\""));
+
+            } else if (linea.startsWith("\"fuente\"")) {
+                fuente = linea.substring(linea.indexOf(":") + 3, linea.lastIndexOf("\""));
+                realidades.add(new Realidad(id, texto, fuente));
+            }
+        }
+
+        return realidades;
+    }
+
+    public static List<String> leerMeme() {
+        return new ArrayList<>();
     }
 }
