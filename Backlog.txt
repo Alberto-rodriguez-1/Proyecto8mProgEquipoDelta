@@ -6,7 +6,8 @@
 --HU6 - El usuario elegirá el dato real (realidad) que desmiente el meme mostrado. Si la respuesta es correcta, ganará un punto.
 --HU7 - El Sistema mostrará el marcador y volverá a mostrar un meme hasta completar 5 memes.
 --HU8 - El Sistema mostrará la puntuación final alcanzada por el usuario.
---HU9 - Si al finalizar, la puntuación del usuario se encuentra entre las tres mejores.
+--HU9 - Si al finalizar, la puntuación del usuario se encuentra entre las tres mejores. Nica  
+edcb82
 --HU10 - El Sistema muestra la lista con las mejores puntuaciones y el nombres de los usuarios y se despide.
 --TT1 - Definir el formato del fichero de memes. - Nica da2f27b.
 --TT2 - Definir la estructura de datos que albergará los memes. - Nica da2f27b.
