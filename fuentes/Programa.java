@@ -92,15 +92,20 @@ public class Programa {
 	 @return Una lista de string conteniendo los memes
      @throws Exception es una excepcion desconocida
 	*/
-    public static List<String> leerMeme()throws IOException {
-        List <String> resultado= new ArrayList<>();
-        Path path=Paths.get(".."+File.separator+"datos"+File.separator+"memes.txt");
-		List<String> datos=Files.readAllLines(path);
-		for(int i =1;i<datos.size();i++){
-			String[] trozos=datos.get(i).split("|");
-			String meme = trozos[i];
-            resultado.add(meme);
-		}
-        return resultado;
+    public static List<String> leerMeme() throws IOException {
+
+    List<String> resultado = new ArrayList<>();
+
+    Path path = Paths.get("..", "datos", "memes.txt");
+
+    List<String> datos = Files.readAllLines(path);
+
+    String[] trozos = datos.get(0).split(";");
+
+    for (String meme : trozos) {
+        resultado.add(meme.trim());
     }
+
+    return resultado;
+}
 }

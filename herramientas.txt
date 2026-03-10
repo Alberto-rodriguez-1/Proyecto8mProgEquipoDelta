@@ -4,9 +4,11 @@ jdk-25\bin\javac -d fuentes/compilados fuentes\*.java
 
 compilar test
 
-jdk-25\bin\javac -cp "compilados;test/lib/junit-platform-console-standalone-1.9.2.jar" -d \fuentes\compilados test\tests\proyecto8MTest.java
+jdk-25\bin\javac -cp "compilados;test/lib/junit-platform-console-standalone-1.9.2.jar" -d fuentes\compilados test\tests\proyecto8MTest.java
 
 ejecutar test
 
-jdk-25\bin\java -jar test/lib/junit-platform-console-standalone-1.9.2.jar --class-path \fuentes\compilados --select-class Proyecto8MTest..
-    
+jdk-25\bin\java -jar test/lib/junit-platform-console-standalone-1.9.2.jar --class-path fuentes\compilados --select-class Proyecto8MTest
+
+Especificacion jdk Alberto:
+..\..\

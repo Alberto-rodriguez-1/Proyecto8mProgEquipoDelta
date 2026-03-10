@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Proyecto8MTest {
     @Test
@@ -29,4 +31,17 @@ public class Proyecto8MTest {
     void testVerificarDatos() {
         assertDoesNotThrow(() -> Programa.verificarDatos());
     }
+    /** 
+     * H3 test
+     * Verifica que la funcion leer memes lea el fichero y genere un lista
+     */
+    @Test public void testLeerMeme() throws IOException { 
+        List<String> memes = Programa.leerMeme(); 
+        // Comprobamos que la lista no es null 
+        assertNotNull(memes); 
+        // Comprobamos que tiene elementos 
+        assertTrue(memes.size() > 0); 
+        // Comprobamos que el primer meme no es vacío 
+        assertFalse(memes.get(0).isEmpty());
+        }
 }
