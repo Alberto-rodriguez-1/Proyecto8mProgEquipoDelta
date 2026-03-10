@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <soluciones>
+    <solucion id="0">
+        <meme></meme>
+        <realidad></realidad>
+    </solucion>
+    
     <solucion id="1">
         <meme></meme>
         <realidad></realidad>
@@ -41,11 +46,6 @@
     </solucion>
     
     <solucion id="9">
-        <meme></meme>
-        <realidad></realidad>
-    </solucion>
-    
-    <solucion id="10">
         <meme></meme>
         <realidad></realidad>
     </solucion>
