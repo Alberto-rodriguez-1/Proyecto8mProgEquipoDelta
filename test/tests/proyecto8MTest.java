@@ -4,19 +4,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Proyecto8MTest {
     @Test
-    public void testConstructor() {
-        Programa programa = new Programa();
-        assertNotEquals(null, programa);
-    }
-
-    /**
-     * HU2 Test
-     * Verifica que la función prepararArchivos() crea correctamente
-     * la carpeta y el fichero txt.
-     */
+    public void testConstructor(){
+			Programa programa =new Programa();
+			assertNotEquals(null, programa);
+	}
+    /**  HU2 Test
+       Verifica que la función prepararArchivos() crea correctamente 
+       la carpeta y el fichero txt.
+    */
     @Test
     void testArchivos() throws IOException {
         Programa.prepararArchivos();
@@ -58,4 +58,17 @@ public class Proyecto8MTest {
         List<Realidad> realidades = Programa.leerRealidades();
         assertEquals(10, realidades.size());
     }
+    /** 
+     * H3 test
+     * Verifica que la funcion leer memes lea el fichero y genere un lista
+     */
+    @Test public void testLeerMeme() throws IOException { 
+        List<String> memes = Programa.leerMeme(); 
+        // Comprobamos que la lista no es null 
+        assertNotNull(memes); 
+        // Comprobamos que tiene elementos 
+        assertTrue(memes.size() > 0); 
+        // Comprobamos que el primer meme no es vacío 
+        assertFalse(memes.get(0).isEmpty());
+        }
 }
