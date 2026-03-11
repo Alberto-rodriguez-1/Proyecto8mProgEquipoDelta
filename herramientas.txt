@@ -11,7 +11,7 @@ jdk-25\bin\java -jar test/lib/junit-platform-console-standalone-1.9.2.jar --clas
 
 JavaDoc:
 
-..\..\jdk-25\bin\javadoc -d documentacion fuentes\*.java
+jdk-25\bin\javadoc -d documentacion fuentes\*.java
 
 Especificacion jdk Alberto:
 ..\..\
