@@ -23,6 +23,7 @@ public class Programa {
         for (Realidad r : realidades) {
             System.out.println(r);
         }
+        mostrarRanking();
     }
 
     /*
@@ -134,5 +135,38 @@ public class Programa {
             Files.write(Paths.get("resultados/mejores.txt"), mejores, 
                         StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         }
+
+    }
+
+    /*
+     * HU10 - Mostrar mejores puntuaciones y despedida.
+     * Lee el archivo 'mejores.txt' en la carpeta resultados y muestra
+     * el ranking de los usuarios con sus puntos.
+     */
+    public static void mostrarRanking() throws IOException {
+        Path rutaRanking = Paths.get("resultados/mejores.txt");
+
+        System.out.println("\n--- RANKING DE MEJORES PUNTUACIONES ---");
+
+        if (Files.exists(rutaRanking)) {
+            // Leemos todas las líneas del archivo de mejores puntuaciones
+            List<String> lineas = Files.readAllLines(rutaRanking);
+            
+            if (lineas.isEmpty()) {
+                System.out.println("Aún no hay puntuaciones registradas.");
+            } else {
+                // Recorremos la lista y mostramos cada nombre y puntuación
+                for (String linea : lineas) {
+                    // Separamos el nombre del puntaje 
+                    String[] datos = linea.split(";");
+                    System.out.println("Jugador: " + datos[0] + " - Puntos: " + datos[1]);
+                }
+            }
+        } else {
+            System.out.println("No se encontró el archivo de ranking.");
+        }
+
+        // Despedida del sistema
+        System.out.println("¡Gracias por jugar! Hasta la próxima.");
     }
 }
