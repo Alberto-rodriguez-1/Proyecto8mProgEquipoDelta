@@ -96,7 +96,7 @@ public class Programa {
 
     List<String> resultado = new ArrayList<>();
 
-    Path path = Paths.get("..", "datos", "memes.txt");
+    Path path = Paths.get("datos", "memes.txt");
 
     List<String> datos = Files.readAllLines(path);
 
