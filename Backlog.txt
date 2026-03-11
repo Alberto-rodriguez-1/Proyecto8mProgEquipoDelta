@@ -7,7 +7,7 @@
 --HU7 - El Sistema mostrará el marcador y volverá a mostrar un meme hasta completar 5 memes.
 --HU8 - El Sistema mostrará la puntuación final alcanzada por el usuario.
 --HU9 - Si al finalizar, la puntuación del usuario se encuentra entre las tres mejores. Nica edcb82
---HU10 - El Sistema muestra la lista con las mejores puntuaciones y el nombres de los usuarios y se despide. Nica
+--HU10 - El Sistema muestra la lista con las mejores puntuaciones y el nombres de los usuarios y se despide. Nica 1037106
 --TT1 - Definir el formato del fichero de memes. - Nica da2f27b.
 --TT2 - Definir la estructura de datos que albergará los memes. - Nica da2f27b.
 --TT3 - Definir el formato del fichero de realidades. - Mario 7e91340
