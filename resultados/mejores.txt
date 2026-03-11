@@ -1,3 +1,0 @@
-nombre;puntuacion
-nombre;puntuacion
-nombre;puntuacion
