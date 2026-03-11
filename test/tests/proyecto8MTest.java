@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Scanner;
 
 public class proyecto8MTest {
@@ -31,11 +32,25 @@ public class proyecto8MTest {
         }
     }
 
+
+
+public class Proyecto8MTest {
+    @Test
+    public void testConstructor(){
+			Programa programa =new Programa();
+			assertNotEquals(null, programa);
+	}
+    /**  HU2 Test
+       Verifica que la función prepararArchivos() crea correctamente 
+       la carpeta y el fichero txt.
+    */
+
     @Test
     void testHU1_VerificarDatos() {
         // Comprueba que no salta el System.exit(0) si los archivos existen
         assertDoesNotThrow(() -> Programa.verificarDatos());
     }
+
 
     @Test
     void testHU2_PrepararArchivos() throws IOException {
@@ -85,4 +100,18 @@ public class proyecto8MTest {
         // Comprobamos que el método lee esos datos de prueba sin dar errores
         assertDoesNotThrow(() -> Programa.mostrarRanking(), "Debería imprimir el ranking por consola");
     }
+    /** 
+     * H3 test
+     * Verifica que la funcion leer memes lea el fichero y genere un lista
+     */
+    @Test public void testLeerMeme() throws IOException { 
+        List<String> memes = Programa.leerMeme(); 
+        // Comprobamos que la lista no es null 
+        assertNotNull(memes); 
+        // Comprobamos que tiene elementos 
+        assertTrue(memes.size() > 0); 
+        // Comprobamos que el primer meme no es vacío 
+        assertFalse(memes.get(0).isEmpty());
+        }
+}
 }

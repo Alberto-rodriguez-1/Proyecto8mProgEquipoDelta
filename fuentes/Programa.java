@@ -1,11 +1,9 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.File;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.nio.file.StandardOpenOption;
 
 /**
  * @author: "Nicanor Gil", "Alberto Rodriguez", "Mario Carmona"
@@ -106,12 +104,28 @@ public class Programa {
 
         return realidades;
     }
+    /**
+	 Lee los memes de un fichero
+	 @return Una lista de string conteniendo los memes
+     @throws Exception es una excepcion desconocida
+	*/
+    public static List<String> leerMeme() throws IOException {
+
+    List<String> resultado = new ArrayList<>();
+
+    Path path = Paths.get("datos", "memes.txt");
 
     // Método para leer memes (pendiente de implementar)
-    public static List<String> leerMeme() {
-        return new ArrayList<>();
+    List<String> datos = Files.readAllLines(path);
+
+    String[] trozos = datos.get(0).split(";");
+
+    for (String meme : trozos) {
+        resultado.add(meme.trim());
     }
 
+    return resultado;
+}
     /* HU9
      * Gestión de puntuaciones y ranking.
      * Si la puntuación entra en el top 3, se pide el nombre y se guarda
