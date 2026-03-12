@@ -2,7 +2,7 @@
 --HU2 - El Sistema comprueba si existe en fichero resultados.txt en el directorio resultados. -Nica 6118d0.
 --HU3 - El Sistema lee el fichero de memes y genera una estructura de datos (array, lista, mapa...). -Alberto 5f1d741
 --HU4 - El Sistema lee el fichero de realidades y genera una estructura de datos (array, lista, mapa...). -Mario 5f805a8
---HU5 - El Sistema mostrará al usuario un meme elegido al azar y una lista numerada de realidades.
+--HU5 - El Sistema mostrará al usuario un meme elegido al azar y una lista numerada de realidades. -Alberto
 --HU6 - El usuario elegirá el dato real (realidad) que desmiente el meme mostrado. Si la respuesta es correcta, ganará un punto.
 --HU7 - El Sistema mostrará el marcador y volverá a mostrar un meme hasta completar 5 memes.
 --HU8 - El Sistema mostrará la puntuación final alcanzada por el usuario.
