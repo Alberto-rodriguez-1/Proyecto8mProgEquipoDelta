@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * @author: "Nicanor Gil", "Alberto Rodriguez", "Mario Carmona"
- */ 
+ */
 
 public class Programa {
 
@@ -104,36 +104,42 @@ public class Programa {
 
         return realidades;
     }
+
     /**
-	 Lee los memes de un fichero
-	 @return Una lista de string conteniendo los memes
-     @throws Exception es una excepcion desconocida
-	*/
+     * Lee los memes de un fichero
+     * 
+     * @return Una lista de string conteniendo los memes
+     * @throws Exception es una excepcion desconocida
+     */
     public static List<String> leerMeme() throws IOException {
 
-    List<String> resultado = new ArrayList<>();
+        List<String> resultado = new ArrayList<>();
 
-    Path path = Paths.get("datos", "memes.txt");
+        Path path = Paths.get("datos", "memes.txt");
 
-    // Método para leer memes (pendiente de implementar)
-    List<String> datos = Files.readAllLines(path);
+        // Método para leer memes (pendiente de implementar)
+        List<String> datos = Files.readAllLines(path);
 
-    String[] trozos = datos.get(0).split(";");
+        String[] trozos = datos.get(0).split(";");
 
-    for (String meme : trozos) {
-        resultado.add(meme.trim());
+        for (String meme : trozos) {
+            resultado.add(meme.trim());
+        }
+
+        return resultado;
     }
 
-    return resultado;
-}
-    /* HU9
+    /*
+     * HU9
      * Gestión de puntuaciones y ranking.
      * Si la puntuación entra en el top 3, se pide el nombre y se guarda
      * en el fichero mejores.txt usando APPEND para añadir al final.
      */
-    public static void gestionarPuntuacion(Integer puntuacionUsuario, Scanner scanner, List<String> mejores) throws IOException {
+    public static void gestionarPuntuacion(Integer puntuacionUsuario, Scanner scanner, List<String> mejores)
+            throws IOException {
         // Miramos si la puntuación es lo suficientemente alta para entrar en el top
-        Boolean esMejor = mejores.size() < 3 || puntuacionUsuario > Integer.parseInt(mejores.get(mejores.size() - 1).split(";")[1]);
+        Boolean esMejor = mejores.size() < 3
+                || puntuacionUsuario > Integer.parseInt(mejores.get(mejores.size() - 1).split(";")[1]);
 
         if (esMejor) {
             // Pillamos el nombre del usuario por consola
@@ -142,12 +148,12 @@ public class Programa {
             mejores.add(nombre + ";" + puntuacionUsuario);
 
             // Mantenemos solo los 3 mejores
-            if (mejores.size() > 3) 
+            if (mejores.size() > 3)
                 mejores.remove(mejores.size() - 1);
 
             // Guardamos la lista actualizada en el disco
-            Files.write(Paths.get("resultados/mejores.txt"), mejores, 
-                        StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.write(Paths.get("resultados/mejores.txt"), mejores,
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         }
 
     }
@@ -165,13 +171,13 @@ public class Programa {
         if (Files.exists(rutaRanking)) {
             // Leemos todas las líneas del archivo de mejores puntuaciones
             List<String> lineas = Files.readAllLines(rutaRanking);
-            
+
             if (lineas.isEmpty()) {
                 System.out.println("Aún no hay puntuaciones registradas.");
             } else {
                 // Recorremos la lista y mostramos cada nombre y puntuación
                 for (String linea : lineas) {
-                    // Separamos el nombre del puntaje 
+                    // Separamos el nombre del puntaje
                     String[] datos = linea.split(";");
                     System.out.println("Jugador: " + datos[0] + " - Puntos: " + datos[1]);
                 }
