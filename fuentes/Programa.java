@@ -11,17 +11,55 @@ import java.util.Scanner;
 
 public class Programa {
 
-    public static void main(String[] args) throws IOException {
-        verificarDatos();
-        prepararArchivos();
+   public static void main(String[] args) throws IOException {
 
-        // HU4 - Cargamos las realidades y las mostramos por pantalla
-        List<Realidad> realidades = leerRealidades();
-        System.out.println("Realidades cargadas: " + realidades.size());
-        for (Realidad r : realidades) {
-            System.out.println(r);
-        }
-        mostrarRanking();
+    /** TT11
+     * Menú con TRY CATCH por si alguien pone un caracter que no es un Integer 
+     * Implementado con SWITCH.
+     * Usamos tambien un Do While porque necesitamos crear un bucle que no sabemos cuando va a acabar.
+     */
+        Scanner teclado = new Scanner(System.in);
+        Integer opcion = 0;
+
+        do {
+            System.out.println("\n----------------------------------");
+            System.out.println("      BIENVENIDO A 8M MEMES.        ");
+            System.out.println("-----------------------------------");
+            System.out.println("1. Iniciar carga de memes.");
+            System.out.println("2. Salir.");
+            System.out.print("Selecciona una opción: ");
+
+            try {
+                opcion = Integer.parseInt(teclado.nextLine());
+            } catch (NumberFormatException error) {
+                opcion = 0; // Opción invalida si no es un número
+            }
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("\nEjecutando procesos...");
+                    verificarDatos();
+                    prepararArchivos();
+                    
+                    // HU4 - Cargamos las realidades y las mostramos por pantalla
+                    List<Realidad> realidades = leerRealidades();
+                    System.out.println("Realidades cargadas: " + realidades.size());
+                    for (Realidad r : realidades) {
+                        System.out.println(r);
+                    }
+                    mostrarRanking();
+                    opcion = 2; //Para salir 
+                    break;
+                case 2:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default: //Por si alguna opcion no es 1 o 2
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+        } while (opcion != 2);
+        
+        teclado.close();
     }
 
     /*
