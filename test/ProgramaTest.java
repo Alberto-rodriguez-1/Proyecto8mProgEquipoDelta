@@ -31,14 +31,23 @@ public class ProgramaTest {
         }
 
         // Archivo para HU3
-        Files.writeString(datosDir.resolve("memes.txt"), "Meme de prueba 1; Meme de prueba 2");
+        Path memes = datosDir.resolve("memes.txt");
+        if (Files.notExists(memes)) {
+            Files.writeString(memes, "Meme de prueba 1; Meme de prueba 2");
+        }
 
         // Archivo para HU4 (Simulación de JSON)
-        String jsonPrueba = "\"id\": 1\n\"texto\": \"Dato Real de Prueba\"\n\"fuente\": \"Libro A\"";
-        Files.writeString(datosDir.resolve("realidades.json"), jsonPrueba);
+        Path realidades = datosDir.resolve("realidades.json");
+        if (Files.notExists(realidades)) {
+            String jsonPrueba = "\"id\": 1\n\"texto\": \"Dato Real de Prueba\"\n\"fuente\": \"Libro A\"";
+            Files.writeString(realidades, jsonPrueba);
+        }
 
         // Archivo para HU1
-        Files.writeString(datosDir.resolve("soluciones.xml"), "<xml></xml>");
+        Path soluciones = datosDir.resolve("soluciones.xml");
+        if (Files.notExists(soluciones)) {
+            Files.writeString(soluciones, "<xml></xml>");
+        }
 
         // --- Limpieza de entorno de salida (HU2, HU9, HU10) ---
         Path resDir = Paths.get("resultados");
