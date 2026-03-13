@@ -1,23 +1,45 @@
---HU1 - Al iniciarse la aplicación, el Sistema comprobará si existe el directorio datos con los ficheros: memes.txt, realidades.json y soluciones.xml. - Nica 1935692.
---HU2 - El Sistema comprueba si existe en fichero resultados.txt en el directorio resultados. - Nica 6118d0.
---HU3 - El Sistema lee el fichero de memes y genera una estructura de datos (array, lista, mapa...). - Alberto 5f1d741
---HU4 - El Sistema lee el fichero de realidades y genera una estructura de datos (array, lista, mapa...). - Mario c6f6610
---HU5 - El Sistema mostrará al usuario un meme elegido al azar y una lista numerada de realidades. - Alberto
---HU6 - El usuario elegirá el dato real (realidad) que desmiente el meme mostrado. Si la respuesta es correcta, ganará un punto. - Mario
---HU7 - El Sistema mostrará el marcador y volverá a mostrar un meme hasta completar 5 memes. 
---HU8 - El Sistema mostrará la puntuación final alcanzada por el usuario.
---HU9 - Si al finalizar, la puntuación del usuario se encuentra entre las tres mejores. - Nica edcb82
---HU10 - El Sistema muestra la lista con las mejores puntuaciones y el nombres de los usuarios y se despide. - Nica 1037106
---TT1 - Definir el formato del fichero de memes. - Nica da2f27b.
---TT2 - Definir la estructura de datos que albergará los memes. - Nica da2f27b.
---TT3 - Definir el formato del fichero de realidades. - Mario 7e91340
---TT4 - Definir la estructura de datos que albergará las realidades (datos reales). - Mario 7e91340
---TT5 - Definir el formato del fichero de soluciones. - Alberto e349bfb
---TT6 - Definir la estructura de datos que albergará las soluciones. - Alberto e349bfb
---TT7 - Definir el formato del fichero de resultados. - Mario a2cf3c5
---TD1 - Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla.
---TD2 - Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación.
---TD3 - Manual del Programador, en formato HTML generado automáticamente por la herramienta javadoc.
---TT8 -Buscar los 10 memes e implementarlos -Nica 714368.
---TT9 -Buscar las realidades e implementarlas - Nica 714368.
---TT10 -Creación de menú en el main - Nica
+# 🛠️ BACKLOG DEL PROYECTO: MEME VS REALIDAD
+
+---
+
+## 📋 HISTORIAS DE USUARIO (HU)
+* **HU1**: Comprobación de directorio `datos` y ficheros `memes.txt`, `realidades.json`, `soluciones.xml`. (Nica 1935692)
+* **HU2**: Comprobación de fichero `resultados.txt` en directorio `resultados`. (Nica 6118d0)
+* **HU3**: Lectura de memes y generación de estructura de datos. (Alberto 5f1d741)
+* **HU4**: Lectura de realidades y generación de estructura de datos. (Mario c6f6610)
+* **HU5**: Mostrar meme al azar y lista numerada de realidades. (Alberto)
+* **HU6**: Selección de respuesta, validación y sumado de puntos. (Mario)
+* **HU7**: Control del bucle de juego (marcador y límite de 5 memes).
+* **HU8**: Mostrar puntuación final del usuario.
+* **HU9**: Comprobar si la puntuación entra en el Top 3. (Nica edcb82)
+* **HU10**: Mostrar ranking de mejores puntuaciones y despedida. (Nica 1037106)
+
+---
+
+## ⚙️ TAREAS TÉCNICAS (TT)
+* **TT1 & TT2**: Formato de fichero y estructura de datos para **Memes**. (Nica da2f27b)
+* **TT3 & TT4**: Formato de fichero y estructura de datos para **Realidades**. (Mario 7e91340)
+* **TT5 & TT6**: Formato de fichero y estructura de datos para **Soluciones**. (Alberto e349bfb)
+* **TT7**: Formato del fichero de resultados. (Mario a2cf3c5)
+* **TT8**: Búsqueda e implementación de 10 memes. (Nica 714368)
+* **TT9**: Búsqueda e implementación de realidades. (Nica 714368)
+* **TT10**: Implementación del menú principal en el Main. (Nica)
+
+---
+
+## 📂 DOCUMENTACIÓN (TD)
+* **TD1**: Manual de Instalación (requerimientos, descarga, compilación y ejecución).
+* **TD2**: Manual de Usuario (guía de uso con capturas de pantalla).
+* **TD3**: Manual del Programador (Javadoc en formato HTML).
+
+---
+
+## 📁 ESTRUCTURA DEL PROYECTO
+```text
+├───datos
+├───documentacion
+│   └───javadoc    
+├───fuentes
+│   └───compilados
+└───test
+    └───lib
