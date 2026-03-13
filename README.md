@@ -1,17 +1,37 @@
-# PROYECTO Memes 8M
+# ♀️ PROYECTO: MEMES 8M
 
-## Integrantes:
+Sistema interactivo diseñado para combatir bulos mediante la confrontación de memes con datos reales verificados. El programa gestiona archivos, valida respuestas y mantiene un ranking histórico de las mejores puntuaciones.
 
-- Nicanor Andrés Gil Moreno
-- Alberto Rodriguez Piris
-- Mario Carmona Parejo
+---
 
-## Introducción
-Este programa interactivo combate la desinformación al enfrentar memes con datos reales verificados. 
-El sistema lee archivos, permite al usuario desmentir bulos para ganar puntos y gestiona un ranking con las tres mejores puntuaciones. 
-Es una herramienta de reivindicación de la verdad que combate el desinformamiento.
+## 👥 INTEGRANTES
+* **Nicanor Andrés Gil Moreno**
+* **Alberto Rodriguez Piris**
+* **Mario Carmona Parejo**
 
+---
 
-## Descripción
-El programa empieza comprobando que todos los archivos de configuración y datos estén en su sitio para que no pete al arrancar. Después de preparar las carpetas, carga los memes y las realidades desde archivos externos para montar la partida. El usuario tiene que ir relacionando cada meme con su verdad correspondiente para ir sumando puntos en el marcador. Al acabar, si el jugador ha hecho una buena puntuación, el sistema le pide el nombre para guardarlo en un ranking histórico. Por último, se muestra la tabla con los mejores tiempos y se cierra el programa con una despedida.
+## 🕹️ FUNCIONAMIENTO
+1. **Validación:** El sistema verifica la integridad de los directorios y archivos de datos al arrancar.
+2. **Carga:** Se parsean los memes, realidades y soluciones desde archivos `.txt`, `.json` y `.xml`.
+3. **Partida:** El usuario debe desmentir el meme seleccionando la realidad correcta. Cada acierto suma un punto.
+4. **Ranking:** Al finalizar 5 rondas, si la puntuación entra en el **Top 3**, se registra el nombre del usuario en el histórico de resultados.
 
+---
+
+## 📁 ESTRUCTURA DEL PROYECTO
+```text
+├───datos                <-- Ficheros: memes.txt, realidades.json, soluciones.xml
+├───documentacion
+│   └───javadoc          <-- Documentación técnica (HTML)
+├───fuentes
+│   └───compilados       <-- Binarios .class ejecutables
+├───jdk-25               <-- Entorno de ejecución (JDK portable)
+│   ├───bin
+│   ├───conf
+│   ├───include
+│   ├───jmods
+│   ├───legal
+│   └───lib
+└───test
+    └───lib              <-- Librerías de testeo
