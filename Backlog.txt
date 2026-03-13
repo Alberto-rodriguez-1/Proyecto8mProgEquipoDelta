@@ -1,3 +1,4 @@
+
 --HU1 - Al iniciarse la aplicación, el Sistema comprobará si existe el directorio datos con los ficheros: memes.txt, realidades.json y soluciones.xml. - Nica 1935692.
 --HU2 - El Sistema comprueba si existe en fichero resultados.txt en el directorio resultados. - Nica 6118d0.
 --HU3 - El Sistema lee el fichero de memes y genera una estructura de datos (array, lista, mapa...). - Alberto 5f1d741
