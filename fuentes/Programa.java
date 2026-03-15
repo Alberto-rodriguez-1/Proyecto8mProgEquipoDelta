@@ -4,7 +4,7 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.Random;
 /**
  * @author: "Nicanor Gil", "Alberto Rodriguez", "Mario Carmona"
  */
@@ -20,7 +20,6 @@ public class Programa {
      */
         Scanner teclado = new Scanner(System.in);
         Integer opcion = 0;
-
         do {
             System.out.println("\n----------------------------------");
             System.out.println("      BIENVENIDO A 8M MEMES.        ");
@@ -40,20 +39,28 @@ public class Programa {
                     System.out.println("\nEjecutando procesos...");
                     verificarDatos();
                     prepararArchivos();
-                    
+                    Random random= new Random();
                     // HU4 - Cargamos las realidades y las mostramos por pantalla
+                    //HU5 - Mostramos por pantalla 1 meme y todas las realidades
                     List<Realidad> realidades = leerRealidades();
-                    System.out.println("Realidades cargadas: " + realidades.size());
-                    for (Realidad r : realidades) {
-                        System.out.println(r);
+                    List<String> memes=leerMeme();
+                    Meme meme=memes.get(random.nextInt(10));
+                    System.out.println("Selecciona la realidad que desmiente este meme:"+meme);
+                    for (Realidad realidad : realidades) {
+                        System.out.println(realidad.getId()+":"+realidad.getTexto());
                     }
+                    try {
+                        Integer respuesta = Integer.parseInt(teclado.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: debes introducir un número válido.");
+                    }
+                    if (solucion.getId()==respuesta)
                     mostrarRanking();
                     opcion = 2; //Para salir 
-                    break;
                 case 2:
                     System.out.println("Saliendo del programa...");
                     break;
-                default: //Por si alguna opcion no es 1 o 2
+                default: //Por si alguna opcion no es la esperada
                     System.out.println("Opción no válida.");
                     break;
             }
