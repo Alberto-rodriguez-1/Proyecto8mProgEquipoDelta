@@ -22,3 +22,5 @@
 --TT8 -Buscar los 10 memes e implementarlos -Nica 714368.
 --TT9 -Buscar las realidades e implementarlas - Nica 714368.
 --TT10 -Creación de menú en el main - Nica
+--TT11 -Creacion e implementacion de la clase Meme -Alberto
+--TT12 -Crear una clase de solucion y leer el fichero de soluciones.
