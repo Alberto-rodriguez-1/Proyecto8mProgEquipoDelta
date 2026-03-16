@@ -62,7 +62,7 @@ public class Programa {
         teclado.close();
     }
 
-    /*
+    /** 
      * HU1 - Verificación de archivos
      * Comprobamos que existan los archivos necesarios en la carpeta datos.
      * Si falta alguno, el programa se cierra para evitar errores.
@@ -76,7 +76,7 @@ public class Programa {
         }
     }
 
-    /*
+    /** 
      * HU2 - Preparación de directorios
      * Creamos la carpeta 'resultados' y el archivo 'resultados.txt' si no existen.
      */
@@ -101,7 +101,7 @@ public class Programa {
         }
     }
 
-    /*
+    /** 
      * HU4
      * Lee el archivo "realidades.json" ubicado en la carpeta datos y
      * crea una lista de objetos Realidad con la información obtenida.
@@ -172,7 +172,7 @@ public class Programa {
     /**
      * Lee los memes de un fichero
      * 
-     * @return Una lista de string conteniendo los memes
+     * @return Una lista de Memes
      * @throws Exception es una excepcion desconocida
      */
     public static List<Meme> leerMeme() throws IOException {
@@ -193,8 +193,19 @@ public class Programa {
 
         return resultado;
     }
+    /** 
+     * TT12
+     * Leer fichero de soluciones
+     * @return una lista de Soluciones 
+     * @throws Exception es una excepcion desconocida
+    */
+    public List<Solucion> leerSoluciones()throws IOException{
+        List<Solucion> resultado=new ArrayList<>();
+        Path path = Paths.get("datos", "soluciones.xml");
 
-    /*
+        return resultado;
+    }
+    /** 
      * HU9
      * Gestión de puntuaciones y ranking.
      * Si la puntuación entra en el top 3, se pide el nombre y se guarda
@@ -223,7 +234,7 @@ public class Programa {
 
     }
 
-    /*
+    /** 
      * HU10 - Mostrar mejores puntuaciones y despedida.
      * Lee el archivo 'mejores.txt' en la carpeta resultados y muestra
      * el ranking de los usuarios con sus puntos.
