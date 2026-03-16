@@ -20,7 +20,7 @@
 --TT9: Buscar las realidades e implementarlas - Nica 714368.
 --TT10: Creación de menú en el main - Nica 5108fbc
 --TT11: Creacion e implementacion de la clase Meme -Alberto a45cf50
---TT12: Crear una clase de solucion y leer el fichero de soluciones. -Alberto 7fc0bc4
+--TT12: Crear una clase de solucion y leer el fichero de soluciones. -Alberto 
 --TT13: Añadir a los imports del programa principal los paquetes correpondientes - Mario e3f4d73
 --TD1: Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla. - Mario aea0727
 --TD2: Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación. - Mario
