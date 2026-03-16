@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 /**
  * Clase de pruebas unitarias para el Proyecto 8M.
@@ -31,14 +33,23 @@ public class ProgramaTest {
         }
 
         // Archivo para HU3
-        Files.writeString(datosDir.resolve("memes.txt"), "Meme de prueba 1; Meme de prueba 2");
+        Path memes = datosDir.resolve("memes.txt");
+        if (Files.notExists(memes)) {
+            Files.writeString(memes, "Meme de prueba 1; Meme de prueba 2");
+        }
 
         // Archivo para HU4 (Simulación de JSON)
-        String jsonPrueba = "\"id\": 1\n\"texto\": \"Dato Real de Prueba\"\n\"fuente\": \"Libro A\"";
-        Files.writeString(datosDir.resolve("realidades.json"), jsonPrueba);
+        Path realidades = datosDir.resolve("realidades.json");
+        if (Files.notExists(realidades)) {
+            String jsonPrueba = "\"id\": 1\n\"texto\": \"Dato Real de Prueba\"\n\"fuente\": \"Libro A\"";
+            Files.writeString(realidades, jsonPrueba);
+        }
 
         // Archivo para HU1
-        Files.writeString(datosDir.resolve("soluciones.xml"), "<xml></xml>");
+        Path soluciones = datosDir.resolve("soluciones.xml");
+        if (Files.notExists(soluciones)) {
+            Files.writeString(soluciones, "<xml></xml>");
+        }
 
         // --- Limpieza de entorno de salida (HU2, HU9, HU10) ---
         Path resDir = Paths.get("resultados");
@@ -92,10 +103,9 @@ public class ProgramaTest {
      */
     @Test
     public void testHU3_LeerMeme() throws IOException {
-        List<String> memes = Programa.leerMeme();
+        List<Meme> memes = Programa.leerMeme();
         assertNotNull(memes, "La lista de memes no debe ser nula.");
         assertTrue(memes.size() > 0, "La lista de memes debería tener elementos.");
-        assertFalse(memes.get(0).isEmpty(), "El contenido del meme no debe estar vacío.");
     }
 
     /**
@@ -146,5 +156,34 @@ public class ProgramaTest {
         Files.write(Paths.get("resultados/mejores.txt"), datosPrueba);
 
         assertDoesNotThrow(() -> Programa.mostrarRanking(), "Debería imprimir el ranking sin lanzar excepciones.");
+    }
+    @Test
+    public void testMostrarMemes(){
+
+        try {
+            ByteArrayOutputStream salida = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(salida));
+            Programa.mostrarMemes();
+            String resultado = salida.toString();
+            assertTrue(resultado.contains("Selecciona la realidad que desmiente este meme:"));
+            assertFalse(resultado.isEmpty());
+        } catch (IOException e) {
+            fail("Se produjo una IOException: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testMostrarFuentes(){
+        try {
+            ByteArrayOutputStream salida = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(salida));
+            Programa.mostrarFuentes();
+            List<Realidad> realidades = Programa.leerRealidades();
+            String resultado = salida.toString();
+            assertTrue(resultado.contains("Fuente:"));
+            assertFalse(resultado.isEmpty());
+        } catch (IOException e) {
+            fail("Se produjo una IOException: " + e.getMessage());
+        }
     }
 }
