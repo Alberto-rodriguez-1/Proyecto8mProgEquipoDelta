@@ -23,4 +23,4 @@
 --TT9 -Buscar las realidades e implementarlas - Nica 714368.
 --TT10 -Creación de menú en el main - Nica
 --TT11 -Creacion e implementacion de la clase Meme -Alberto a45cf50
---TT12 -Crear una clase de solucion y leer el fichero de soluciones.
+--TT12 -Crear una clase de solucion y leer el fichero de soluciones. -Alberto
