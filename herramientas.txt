@@ -1,6 +1,6 @@
 Compilar programa
 
-jdk-25\bin\javac -d compilados fuentes\*.java
+jdk-25\bin\javac -d compilados fuentes\com\iescastelar\*.java
 
 Ejecutar:
 
@@ -8,7 +8,7 @@ jdk-25\bin\java -cp compilados Programa
 
 compilar test
 
-jdk-25\bin\javac -cp "compilados;test/lib/junit-platform-console-standalone-1.9.2.jar" -d compilados test\ProgramaTest.java
+jdk-25\bin\javac -cp "compilados;test/lib/junit-platform-console-standalone-1.9.2.jar" -d compilados test\com\iescastelar\ProgramaTest.java
 
 ejecutar test
 
