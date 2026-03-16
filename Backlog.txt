@@ -16,7 +16,7 @@
 --TT5 - Definir el formato del fichero de soluciones. - Alberto e349bfb
 --TT6 - Definir la estructura de datos que albergará las soluciones. - Alberto e349bfb
 --TT7 - Definir el formato del fichero de resultados. - Mario a2cf3c5
---TD1 - Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla. - Mario
+--TD1 - Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla. - Mario aea0727
 --TD2 - Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación. - Mario
 --TD3 - Manual del Programador, en formato HTML generado automáticamente por la herramienta javadoc. - Mario
 --TT8 -Buscar los 10 memes e implementarlos -Nica 714368.
