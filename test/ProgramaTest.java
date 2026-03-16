@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 /**
  * Clase de pruebas unitarias para el Proyecto 8M.
@@ -101,10 +103,9 @@ public class ProgramaTest {
      */
     @Test
     public void testHU3_LeerMeme() throws IOException {
-        List<String> memes = Programa.leerMeme();
+        List<Meme> memes = Programa.leerMeme();
         assertNotNull(memes, "La lista de memes no debe ser nula.");
         assertTrue(memes.size() > 0, "La lista de memes debería tener elementos.");
-        assertFalse(memes.get(0).isEmpty(), "El contenido del meme no debe estar vacío.");
     }
 
     /**
@@ -155,5 +156,34 @@ public class ProgramaTest {
         Files.write(Paths.get("resultados/mejores.txt"), datosPrueba);
 
         assertDoesNotThrow(() -> Programa.mostrarRanking(), "Debería imprimir el ranking sin lanzar excepciones.");
+    }
+    @Test
+    public void testMostrarMemes(){
+
+        try {
+            ByteArrayOutputStream salida = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(salida));
+            Programa.mostrarMemes();
+            String resultado = salida.toString();
+            assertTrue(resultado.contains("Seleccione el numero de una de estas realidades:"));
+            assertFalse(resultado.isEmpty());
+        } catch (IOException e) {
+            fail("Se produjo una IOException: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testMostrarFuentes(){
+        try {
+            ByteArrayOutputStream salida = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(salida));
+            Programa.mostrarFuentes();
+            List<Realidad> realidades = Programa.leerRealidades();
+            String resultado = salida.toString();
+            assertTrue(resultado.contains("Fuente:"));
+            assertFalse(resultado.isEmpty());
+        } catch (IOException e) {
+            fail("Se produjo una IOException: " + e.getMessage());
+        }
     }
 }

@@ -39,25 +39,18 @@ public class Programa {
                     System.out.println("\nEjecutando procesos...");
                     verificarDatos();
                     prepararArchivos();
-                    Random random= new Random();
-                    // HU4 - Cargamos las realidades y las mostramos por pantalla
-                    //HU5 - Mostramos por pantalla 1 meme y todas las realidades
-                    List<Realidad> realidades = leerRealidades();
-                    List<String> memes=leerMeme();
-                    Meme meme=memes.get(random.nextInt(10));
-                    System.out.println("Selecciona la realidad que desmiente este meme:"+meme);
-                    for (Realidad realidad : realidades) {
-                        System.out.println(realidad.getId()+":"+realidad.getTexto());
-                    }
+                    mostrarMemes();
                     try {
+                        System.out.print("Seleccione el numero de una de estas realidades:");
                         Integer respuesta = Integer.parseInt(teclado.nextLine());
                     } catch (NumberFormatException e) {
                         System.out.println("Error: debes introducir un número válido.");
                     }
-                    if (solucion.getId()==respuesta)
+                    //if (solucion.getId()==respuesta)
                     mostrarRanking();
                     opcion = 2; //Para salir 
                 case 2:
+                    mostrarFuentes();
                     System.out.println("Saliendo del programa...");
                     break;
                 default: //Por si alguna opcion no es la esperada
@@ -149,26 +142,53 @@ public class Programa {
 
         return realidades;
     }
-
+    /**
+     * Muestra un meme aleatorio junto con una lista de todas las realidades numeradas
+     * @throws Exception es una excepcion desconocida
+     *
+     */
+    public static void  mostrarMemes()throws IOException{
+        Random random= new Random();
+        //HU5 - Mostramos por pantalla 1 meme y todas las realidades
+        List<Realidad> realidades = leerRealidades();
+        List<Meme> memes=leerMeme();
+        Meme meme=memes.get(random.nextInt(memes.size()));
+        System.out.print("Selecciona la realidad que desmiente este meme:");
+        System.out.println(meme);
+        for (Realidad realidad : realidades) {
+            System.out.println(realidad.getId()+":"+realidad.getTexto());
+        }
+    }
+    /**
+     * Muestra las fuentes de las realidades para evitar grandes cantidades de texto en el funcionamiento del programa
+     * @throws Exception es una excepcion desconocida
+     */    
+    public static void mostrarFuentes()throws IOException{
+         List<Realidad> realidades = leerRealidades();
+        for (Realidad realidad : realidades) {
+            System.out.println(realidad.getId()+":"+realidad.getTexto()+"Fuente:"+realidad.getFuente());
+        }
+    }
     /**
      * Lee los memes de un fichero
      * 
      * @return Una lista de string conteniendo los memes
      * @throws Exception es una excepcion desconocida
      */
-    public static List<String> leerMeme() throws IOException {
+    public static List<Meme> leerMeme() throws IOException {
 
-        List<String> resultado = new ArrayList<>();
+        List<Meme> resultado = new ArrayList<>();
 
         Path path = Paths.get("datos", "memes.txt");
 
         // Método para leer memes (pendiente de implementar)
         List<String> datos = Files.readAllLines(path);
-
+        Integer id=0;
         String[] trozos = datos.get(0).split(";");
-
-        for (String meme : trozos) {
-            resultado.add(meme.trim());
+        for (String tmeme : trozos) {
+            Meme meme=new Meme(tmeme,id);
+            id++;
+            resultado.add(meme);
         }
 
         return resultado;
