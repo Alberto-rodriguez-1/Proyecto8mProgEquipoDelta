@@ -165,7 +165,7 @@ public class ProgramaTest {
             System.setOut(new PrintStream(salida));
             Programa.mostrarMemes();
             String resultado = salida.toString();
-            assertTrue(resultado.contains("Seleccione el numero de una de estas realidades:"));
+            assertTrue(resultado.contains("Selecciona la realidad que desmiente este meme:"));
             assertFalse(resultado.isEmpty());
         } catch (IOException e) {
             fail("Se produjo una IOException: " + e.getMessage());
