@@ -15,7 +15,7 @@ import org.w3c.dom.NodeList;
  * @author: "Nicanor Gil", "Alberto Rodriguez", "Mario Carmona"
  */
 
-public class Programa {
+public class MemesMujeres {
 
     public static void main(String[] args) throws IOException {
 
