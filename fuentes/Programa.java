@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 /**
  * @author: "Nicanor Gil", "Alberto Rodriguez", "Mario Carmona"
  */
@@ -21,11 +28,13 @@ public class Programa {
         Scanner teclado = new Scanner(System.in);
         Integer opcion = 0;
         do {
+            Integer puntuacion=0;
             System.out.println("\n----------------------------------");
             System.out.println("      BIENVENIDO A 8M MEMES.        ");
             System.out.println("-----------------------------------");
             System.out.println("1. Iniciar carga de memes.");
             System.out.println("2. Salir.");
+            System.out.println("3. Mostrar fuentes.");
             System.out.print("Selecciona una opción: ");
 
             try {
@@ -36,23 +45,35 @@ public class Programa {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("\nEjecutando procesos...");
-                    verificarDatos();
-                    prepararArchivos();
-                    mostrarMemes();
-                    try {
-                        System.out.print("Seleccione el numero de una de estas realidades:");
-                        Integer respuesta = Integer.parseInt(teclado.nextLine());
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error: debes introducir un número válido.");
+                    for(int i=0;i<5;i++){
+                        System.out.println("\nEjecutando procesos...");
+                        verificarDatos();
+                        prepararArchivos();
+                        try {
+                            Solucion solucion=mostrarMemes();
+                            System.out.print("Seleccione el numero de una de estas realidades:");
+                            Integer respuesta = Integer.parseInt(teclado.nextLine());
+                            if (solucion.getId()==respuesta){
+                                System.out.println("Correcto");
+                                puntuacion++;
+                            }else{
+                                System.out.println("Incorrecto");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error: debes introducir un número válido.");
+                        } catch (Exception e) {
+                            System.out.println("Error al mostrar memes: " + e.getMessage());
+                        }
                     }
-                    //if (solucion.getId()==respuesta)
-                    mostrarRanking();
-                    opcion = 2; //Para salir 
+                    //List<String> mejores=leerPuntuaciones();
+                    //gestionarPuntuacion( puntuacion, teclado,  mejores);
+                    opcion=2;
                 case 2:
-                    mostrarFuentes();
+                    mostrarRanking(); 
                     System.out.println("Saliendo del programa...");
                     break;
+                case 3:
+                    mostrarFuentes();
                 default: //Por si alguna opcion no es la esperada
                     System.out.println("Opción no válida.");
                     break;
@@ -142,22 +163,35 @@ public class Programa {
 
         return realidades;
     }
+    /** 
+     * Esta funcion lee el fichero de resultados para crear una lista de puntuaciones
+    */
+    /*public static void leerPuntuaciones(){
+        
+    }*/
     /**
      * Muestra un meme aleatorio junto con una lista de todas las realidades numeradas
      * @throws Exception es una excepcion desconocida
      *
      */
-    public static void  mostrarMemes()throws IOException{
+    public static Solucion mostrarMemes()throws Exception{
         Random random= new Random();
         //HU5 - Mostramos por pantalla 1 meme y todas las realidades
         List<Realidad> realidades = leerRealidades();
         List<Meme> memes=leerMeme();
         Meme meme=memes.get(random.nextInt(memes.size()));
         System.out.print("Selecciona la realidad que desmiente este meme:");
-        System.out.println(meme);
+        System.out.println(meme.getTexto());
         for (Realidad realidad : realidades) {
             System.out.println(realidad.getId()+":"+realidad.getTexto());
         }
+        List<Solucion> soluciones= leerSoluciones();
+        for(Solucion solucion: soluciones){
+            if(solucion.getId()==meme.getId()){
+                return solucion;
+            }
+        }
+        return null;
     }
     /**
      * Muestra las fuentes de las realidades para evitar grandes cantidades de texto en el funcionamiento del programa
@@ -199,10 +233,25 @@ public class Programa {
      * @return una lista de Soluciones 
      * @throws Exception es una excepcion desconocida
     */
-    public List<Solucion> leerSoluciones()throws IOException{
+    public static List<Solucion> leerSoluciones()throws Exception{
         List<Solucion> resultado=new ArrayList<>();
-        Path path = Paths.get("datos", "soluciones.xml");
-
+        File ficheroXML = new File("datos","soluciones.xml");
+        DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
+        DocumentBuilder constructor = factoria.newDocumentBuilder();
+        Document documento = constructor.parse(ficheroXML);
+        
+        Element raiz = documento.getDocumentElement();
+        
+        NodeList listaSoluciones = raiz.getElementsByTagName("solucion");
+        
+        for (int i = 0; i < listaSoluciones.getLength(); i++) {
+            Element solucion = (Element) listaSoluciones.item(i);
+            Integer id = Integer.valueOf(solucion.getAttribute("id"));
+            String meme = solucion.getElementsByTagName("meme").item(0).getTextContent();
+            String realidad = solucion.getElementsByTagName("realidad").item(0).getTextContent();
+            Solucion solucionFinal = new Solucion(id, meme, realidad);
+            resultado.add(solucionFinal);
+        }
         return resultado;
     }
     /** 
@@ -219,6 +268,7 @@ public class Programa {
 
         if (esMejor) {
             // Pillamos el nombre del usuario por consola
+            System.out.print("Felicidades has entrado en el top. Introduce un nombre para ser registrado:");
             String nombre = scanner.nextLine().trim();
             // Lo añadimos a nuestra lista en memoria
             mejores.add(nombre + ";" + puntuacionUsuario);
