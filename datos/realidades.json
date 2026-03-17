@@ -1,52 +1,52 @@
 {
   "realidades": [
     {
-      "id": 1,
+      "id": 0,
       "texto": "La brecha en las pensiones de jubilación es del 33%, con una diferencia de más de 500€ de media entre hombres y mujeres.",
       "fuente": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosPlanificacion"
     },
     {
-      "id": 2,
+      "id": 1,
       "texto": "Las mujeres dedican 15 horas más a la semana que los hombres a las tareas del hogar y cuidados de familiares.",
       "fuente": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_P&cid=1254736176815"
     },
     {
-      "id": 3,
+      "id": 2,
       "texto": "El porcentaje de denuncias falsas por violencia de género es del 0,01% según el histórico registrado desde 2009.",
       "fuente": "https://www.fiscal.es/memorias/memoria2023/index.html"
     },
     {
-      "id": 4,
+      "id": 3,
       "texto": "Aunque hay más graduadas universitarias, la presencia femenina en la alta dirección de las empresas españolas es solo del 38%.",
       "fuente": "https://www.grantthornton.es/perspectivas/women-in-business-2024/"
     },
     {
-      "id": 5,
+      "id": 4,
       "texto": "El 74% de la población ocupada a tiempo parcial en España son mujeres, principalmente por motivos de cuidados.",
       "fuente": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_P&cid=1254736176918"
     },
     {
-      "id": 6,
+      "id": 5,
       "texto": "La 'Tasa Rosa' implica que productos de higiene idénticos cuestan hasta un 11% más en su versión destinada a mujeres.",
       "fuente": "https://www.facua.org/es/estudios.php"
     },
     {
-      "id": 7,
+      "id": 6,
       "texto": "En las empresas del IBEX 35, solo un 6% de las presidencias ejecutivas o puestos de CEO están ocupados por mujeres.",
       "fuente": "https://www.cnmv.es/portal/Publicaciones/Informes-Gobierno-Corporativo.aspx"
     },
     {
-      "id": 8,
+      "id": 7,
       "texto": "El 80% de las agresiones sexuales son cometidas por personas del entorno cercano o conocido de la víctima.",
       "fuente": "https://estadisticasviolenciagenero.igualdad.gob.es/"
     },
     {
-      "id": 9,
+      "id": 8,
       "texto": "Solo el 12% de las personas matriculadas en grados de informática y tecnologías digitales en España son mujeres.",
       "fuente": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/universitaria.html"
     },
     {
-      "id": 10,
+      "id": 9,
       "texto": "La tasa de riesgo de pobreza o exclusión social es mayor en mujeres (27,2%) que en hombres (25,8%).",
       "fuente": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_P&cid=1254736176807"
     }
