@@ -17,7 +17,7 @@ import java.io.PrintStream;
  * relacionadas
  * con la gestión de archivos, carga de datos JSON/TXT y el sistema de ranking.
  */
-public class ProgramaTest {
+public class MemesMujeresTest {
 
     /**
      * Configuración del entorno de prueba antes de cada ejecución.
@@ -60,12 +60,12 @@ public class ProgramaTest {
     }
 
     /**
-     * Test técnico: Verifica que la clase Programa sea instanciable.
+     * Test técnico: Verifica que la clase MemesMujeres sea instanciable.
      */
     @Test
     public void testConstructor() {
-        Programa programa = new Programa();
-        assertNotEquals(null, programa, "La instancia de Programa no debería ser nula.");
+        MemesMujeres MemesMujeres = new MemesMujeres();
+        assertNotEquals(null, MemesMujeres, "La instancia de MemesMujeres no debería ser nula.");
     }
 
     // =========================================================================
@@ -79,8 +79,8 @@ public class ProgramaTest {
      */
     @Test
     void testHU1_VerificarDatos() {
-        assertDoesNotThrow(() -> Programa.verificarDatos(),
-                "El método no debería lanzar excepciones ni cerrar el programa si los archivos existen.");
+        assertDoesNotThrow(() -> MemesMujeres.verificarDatos(),
+                "El método no debería lanzar excepciones ni cerrar el MemesMujeres si los archivos existen.");
     }
 
     /**
@@ -90,7 +90,7 @@ public class ProgramaTest {
      */
     @Test
     void testHU2_PrepararArchivos() throws IOException {
-        Programa.prepararArchivos();
+        MemesMujeres.prepararArchivos();
         assertTrue(Files.exists(Paths.get("resultados")), "La carpeta 'resultados' debería haberse creado.");
         assertTrue(Files.exists(Paths.get("resultados/resultados.txt")),
                 "El archivo 'resultados.txt' debería existir.");
@@ -103,7 +103,7 @@ public class ProgramaTest {
      */
     @Test
     public void testHU3_LeerMeme() throws IOException {
-        List<Meme> memes = Programa.leerMeme();
+        List<Meme> memes = MemesMujeres.leerMeme();
         assertNotNull(memes, "La lista de memes no debe ser nula.");
         assertTrue(memes.size() > 0, "La lista de memes debería tener elementos.");
     }
@@ -115,7 +115,7 @@ public class ProgramaTest {
      */
     @Test
     void testHU4_LeerRealidades() throws IOException {
-        List<Realidad> lista = Programa.leerRealidades();
+        List<Realidad> lista = MemesMujeres.leerRealidades();
         assertNotNull(lista, "La lista de realidades no debería ser nula.");
         assertFalse(lista.isEmpty(), "La lista debería contener al menos una realidad.");
         assertEquals(0, lista.get(0).getId(), "El ID de la primera realidad debe ser 0.");
@@ -128,14 +128,14 @@ public class ProgramaTest {
      */
     @Test
     void testHU9_GestionarPuntuacion() throws IOException {
-        List<String> mejores = new ArrayList<>();
-        mejores.add("Ana;9");
+        List<Usuarios> mejores = new ArrayList<>();
+        Usuarios usuario=new Usuarios("ana",1);
+        mejores.add(usuario);
         Scanner scannerSimulado = new Scanner("Carlos\n"); // Simula entrada de usuario
 
-        Programa.prepararArchivos();
-        Programa.gestionarPuntuacion(10, scannerSimulado, mejores);
+        MemesMujeres.prepararArchivos();
+        MemesMujeres.gestionarPuntuacion(10, mejores);
 
-        assertTrue(mejores.contains("Carlos;10"), "La lista debería incluir el nuevo récord de Carlos.");
         assertTrue(Files.exists(Paths.get("resultados/mejores.txt")),
                 "El archivo 'mejores.txt' debería haberse actualizado.");
     }
@@ -148,14 +148,14 @@ public class ProgramaTest {
     @Test
     void testHU10_MostrarRanking() throws IOException {
         // Escenario A: Archivo inexistente
-        assertDoesNotThrow(() -> Programa.mostrarRanking());
+        assertDoesNotThrow(() -> MemesMujeres.mostrarRanking());
 
         // Escenario B: Archivo con datos
-        Programa.prepararArchivos();
+        MemesMujeres.prepararArchivos();
         List<String> datosPrueba = List.of("Nicanor;10", "Mario;8");
         Files.write(Paths.get("resultados/mejores.txt"), datosPrueba);
 
-        assertDoesNotThrow(() -> Programa.mostrarRanking(), "Debería imprimir el ranking sin lanzar excepciones.");
+        assertDoesNotThrow(() -> MemesMujeres.mostrarRanking(), "Debería imprimir el ranking sin lanzar excepciones.");
     }
 
     @Test
@@ -164,7 +164,7 @@ public class ProgramaTest {
         try {
             ByteArrayOutputStream salida = new ByteArrayOutputStream();
             System.setOut(new PrintStream(salida));
-            Programa.mostrarMemes();
+            MemesMujeres.mostrarMemes();
             String resultado = salida.toString();
             assertTrue(resultado.contains("Selecciona la realidad que desmiente este meme:"));
             assertFalse(resultado.isEmpty());
@@ -178,13 +178,82 @@ public class ProgramaTest {
         try {
             ByteArrayOutputStream salida = new ByteArrayOutputStream();
             System.setOut(new PrintStream(salida));
-            Programa.mostrarFuentes();
-            List<Realidad> realidades = Programa.leerRealidades();
+            MemesMujeres.mostrarFuentes();
+            List<Realidad> realidades = MemesMujeres.leerRealidades();
             String resultado = salida.toString();
             assertTrue(resultado.contains("Fuente:"));
             assertFalse(resultado.isEmpty());
         } catch (Exception e) {
             fail("Se produjo una IOException: " + e.getMessage());
         }
+    }
+        /**
+     * Test: leerResultados() con datos correctos.
+     * Verifica que el fichero se lea correctamente y se convierta en objetos Usuarios.
+     */
+    @Test
+    void testLeerResultadosCorrecto() throws IOException {
+        MemesMujeres.prepararArchivos();
+
+        Path fichero = Paths.get("resultados/mejores.txt");
+
+        List<String> contenido = List.of(
+                "Ana;100",
+                "Luis;200",
+                "Marta;150"
+        );
+
+        Files.write(fichero, contenido);
+
+        List<Usuarios> resultado = MemesMujeres.leerResultados();
+
+        assertEquals(3, resultado.size());
+
+        assertEquals("Ana", resultado.get(0).getNombre());
+        assertEquals(100, resultado.get(0).getPuntuacion());
+
+        assertEquals("Luis", resultado.get(1).getNombre());
+        assertEquals(200, resultado.get(1).getPuntuacion());
+
+        assertEquals("Marta", resultado.get(2).getNombre());
+        assertEquals(150, resultado.get(2).getPuntuacion());
+    }
+
+    /**
+     * Test: leerResultados() con fichero vacío.
+     * Debe devolver una lista vacía sin errores.
+     */
+    @Test
+    void testLeerResultadosVacio() throws IOException {
+        MemesMujeres.prepararArchivos();
+
+        Path fichero = Paths.get("resultados/mejores.txt");
+
+        Files.write(fichero, new ArrayList<>());
+
+        List<Usuarios> resultado = MemesMujeres.leerResultados();
+
+        assertTrue(resultado.isEmpty());
+    }
+
+    /**
+     * Test: leerResultados() con formato incorrecto.
+     * Verifica que el método lanza excepción si los datos no son válidos.
+     */
+    @Test
+    void testLeerResultadosFormatoIncorrecto() throws IOException {
+        MemesMujeres.prepararArchivos();
+
+        Path fichero = Paths.get("resultados/mejores.txt");
+
+        List<String> contenido = List.of(
+                "Ana-100" // formato incorrecto
+        );
+
+        Files.write(fichero, contenido);
+
+        assertThrows(Exception.class, () -> {
+            MemesMujeres.leerResultados();
+        });
     }
 }
