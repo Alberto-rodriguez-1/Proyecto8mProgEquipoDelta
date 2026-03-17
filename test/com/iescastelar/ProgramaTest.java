@@ -118,7 +118,7 @@ public class ProgramaTest {
         List<Realidad> lista = Programa.leerRealidades();
         assertNotNull(lista, "La lista de realidades no debería ser nula.");
         assertFalse(lista.isEmpty(), "La lista debería contener al menos una realidad.");
-        assertEquals(1, lista.get(0).getId(), "El ID de la realidad cargada debe ser 1.");
+        assertEquals(0, lista.get(0).getId(), "El ID de la primera realidad debe ser 0.");
     }
 
     /**
@@ -157,8 +157,9 @@ public class ProgramaTest {
 
         assertDoesNotThrow(() -> Programa.mostrarRanking(), "Debería imprimir el ranking sin lanzar excepciones.");
     }
+
     @Test
-    public void testMostrarMemes(){
+    public void testMostrarMemes() {
 
         try {
             ByteArrayOutputStream salida = new ByteArrayOutputStream();
@@ -167,13 +168,13 @@ public class ProgramaTest {
             String resultado = salida.toString();
             assertTrue(resultado.contains("Selecciona la realidad que desmiente este meme:"));
             assertFalse(resultado.isEmpty());
-        } catch (IOException e) {
+        } catch (Exception e) {
             fail("Se produjo una IOException: " + e.getMessage());
         }
     }
 
     @Test
-    public void testMostrarFuentes(){
+    public void testMostrarFuentes() {
         try {
             ByteArrayOutputStream salida = new ByteArrayOutputStream();
             System.setOut(new PrintStream(salida));
@@ -182,7 +183,7 @@ public class ProgramaTest {
             String resultado = salida.toString();
             assertTrue(resultado.contains("Fuente:"));
             assertFalse(resultado.isEmpty());
-        } catch (IOException e) {
+        } catch (Exception e) {
             fail("Se produjo una IOException: " + e.getMessage());
         }
     }

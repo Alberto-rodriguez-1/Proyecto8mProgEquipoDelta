@@ -7,28 +7,29 @@ import java.util.Scanner;
 import java.util.Random;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+
 /**
  * @author: "Nicanor Gil", "Alberto Rodriguez", "Mario Carmona"
  */
 
 public class Programa {
 
-   public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-    /** TT11
-     * Menú con TRY CATCH por si alguien pone un caracter que no es un Integer 
-     * Implementado con SWITCH.
-     * Usamos tambien un Do While porque necesitamos crear un bucle que no sabemos cuando va a acabar.
-     */
+        /**
+         * TT11
+         * Menú con TRY CATCH por si alguien pone un caracter que no es un Integer
+         * Implementado con SWITCH.
+         * Usamos tambien un Do While porque necesitamos crear un bucle que no sabemos
+         * cuando va a acabar.
+         */
         Scanner teclado = new Scanner(System.in);
         Integer opcion = 0;
         do {
-            Integer puntuacion=0;
+            Integer puntuacion = 0;
             System.out.println("\n----------------------------------");
             System.out.println("      BIENVENIDO A 8M MEMES.        ");
             System.out.println("-----------------------------------");
@@ -45,45 +46,50 @@ public class Programa {
 
             switch (opcion) {
                 case 1:
-                    for(int i=0;i<5;i++){
+                    for (int i = 0; i < 5; i++) {
                         System.out.println("\nEjecutando procesos...");
                         verificarDatos();
                         prepararArchivos();
                         try {
-                            Solucion solucion=mostrarMemes();
+                            Solucion solucion = mostrarMemes();
                             System.out.print("Seleccione el numero de una de estas realidades:");
                             Integer respuesta = Integer.parseInt(teclado.nextLine());
-                            if (solucion.getId()==respuesta){
+
+                            if (solucion.getId().equals(respuesta)) {
                                 System.out.println("Correcto");
                                 puntuacion++;
-                            }else{
+                            } else {
                                 System.out.println("Incorrecto");
                             }
+
+                            // HU7
+                            System.out.println("Puntuación actual: " + puntuacion + "/" + (i + 1));
+
                         } catch (NumberFormatException e) {
                             System.out.println("Error: debes introducir un número válido.");
                         } catch (Exception e) {
                             System.out.println("Error al mostrar memes: " + e.getMessage());
                         }
                     }
-                    //List<String> mejores=leerPuntuaciones();
-                    //gestionarPuntuacion( puntuacion, teclado,  mejores);
-                    opcion=2;
+                    // List<String> mejores=leerPuntuaciones();
+                    // gestionarPuntuacion( puntuacion, teclado, mejores);
+                    opcion = 2;
                 case 2:
-                    mostrarRanking(); 
+                    mostrarRanking();
                     System.out.println("Saliendo del programa...");
                     break;
                 case 3:
                     mostrarFuentes();
-                default: //Por si alguna opcion no es la esperada
+                default: // Por si alguna opcion no es la esperada
                     System.out.println("Opción no válida.");
                     break;
             }
         } while (opcion != 2);
-        
+
         teclado.close();
     }
 
-    /** 
+    /**
      * HU1 - Verificación de archivos
      * Comprobamos que existan los archivos necesarios en la carpeta datos.
      * Si falta alguno, el programa se cierra para evitar errores.
@@ -97,7 +103,7 @@ public class Programa {
         }
     }
 
-    /** 
+    /**
      * HU2 - Preparación de directorios
      * Creamos la carpeta 'resultados' y el archivo 'resultados.txt' si no existen.
      */
@@ -122,7 +128,7 @@ public class Programa {
         }
     }
 
-    /** 
+    /**
      * HU4
      * Lee el archivo "realidades.json" ubicado en la carpeta datos y
      * crea una lista de objetos Realidad con la información obtenida.
@@ -163,46 +169,56 @@ public class Programa {
 
         return realidades;
     }
-    /** 
-     * Esta funcion lee el fichero de resultados para crear una lista de puntuaciones
-    */
-    /*public static void leerPuntuaciones(){
-        
-    }*/
+
     /**
-     * Muestra un meme aleatorio junto con una lista de todas las realidades numeradas
+     * Esta funcion lee el fichero de resultados para crear una lista de
+     * puntuaciones
+     */
+    /*
+     * public static void leerPuntuaciones(){
+     * 
+     * }
+     */
+    /**
+     * Muestra un meme aleatorio junto con una lista de todas las realidades
+     * numeradas
+     * 
      * @throws Exception es una excepcion desconocida
      *
      */
-    public static Solucion mostrarMemes()throws Exception{
-        Random random= new Random();
-        //HU5 - Mostramos por pantalla 1 meme y todas las realidades
+    public static Solucion mostrarMemes() throws Exception {
+        Random random = new Random();
+        // HU5 - Mostramos por pantalla 1 meme y todas las realidades
         List<Realidad> realidades = leerRealidades();
-        List<Meme> memes=leerMeme();
-        Meme meme=memes.get(random.nextInt(memes.size()));
+        List<Meme> memes = leerMeme();
+        Meme meme = memes.get(random.nextInt(memes.size()));
         System.out.print("Selecciona la realidad que desmiente este meme:");
         System.out.println(meme.getTexto());
         for (Realidad realidad : realidades) {
-            System.out.println(realidad.getId()+":"+realidad.getTexto());
+            System.out.println(realidad.getId() + ":" + realidad.getTexto());
         }
-        List<Solucion> soluciones= leerSoluciones();
-        for(Solucion solucion: soluciones){
-            if(solucion.getId()==meme.getId()){
+        List<Solucion> soluciones = leerSoluciones();
+        for (Solucion solucion : soluciones) {
+            if (solucion.getId() == meme.getId()) {
                 return solucion;
             }
         }
         return null;
     }
+
     /**
-     * Muestra las fuentes de las realidades para evitar grandes cantidades de texto en el funcionamiento del programa
+     * Muestra las fuentes de las realidades para evitar grandes cantidades de texto
+     * en el funcionamiento del programa
+     * 
      * @throws Exception es una excepcion desconocida
-     */    
-    public static void mostrarFuentes()throws IOException{
-         List<Realidad> realidades = leerRealidades();
+     */
+    public static void mostrarFuentes() throws IOException {
+        List<Realidad> realidades = leerRealidades();
         for (Realidad realidad : realidades) {
-            System.out.println(realidad.getId()+":"+realidad.getTexto()+"Fuente:"+realidad.getFuente());
+            System.out.println(realidad.getId() + ":" + realidad.getTexto() + "Fuente:" + realidad.getFuente());
         }
     }
+
     /**
      * Lee los memes de un fichero
      * 
@@ -217,33 +233,35 @@ public class Programa {
 
         // Método para leer memes (pendiente de implementar)
         List<String> datos = Files.readAllLines(path);
-        Integer id=0;
+        Integer id = 0;
         String[] trozos = datos.get(0).split(";");
         for (String tmeme : trozos) {
-            Meme meme=new Meme(tmeme,id);
+            Meme meme = new Meme(tmeme, id);
             id++;
             resultado.add(meme);
         }
 
         return resultado;
     }
-    /** 
+
+    /**
      * TT12
      * Leer fichero de soluciones
-     * @return una lista de Soluciones 
+     * 
+     * @return una lista de Soluciones
      * @throws Exception es una excepcion desconocida
-    */
-    public static List<Solucion> leerSoluciones()throws Exception{
-        List<Solucion> resultado=new ArrayList<>();
-        File ficheroXML = new File("datos","soluciones.xml");
+     */
+    public static List<Solucion> leerSoluciones() throws Exception {
+        List<Solucion> resultado = new ArrayList<>();
+        File ficheroXML = new File("datos", "soluciones.xml");
         DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
         DocumentBuilder constructor = factoria.newDocumentBuilder();
         Document documento = constructor.parse(ficheroXML);
-        
+
         Element raiz = documento.getDocumentElement();
-        
+
         NodeList listaSoluciones = raiz.getElementsByTagName("solucion");
-        
+
         for (int i = 0; i < listaSoluciones.getLength(); i++) {
             Element solucion = (Element) listaSoluciones.item(i);
             Integer id = Integer.valueOf(solucion.getAttribute("id"));
@@ -254,7 +272,8 @@ public class Programa {
         }
         return resultado;
     }
-    /** 
+
+    /**
      * HU9
      * Gestión de puntuaciones y ranking.
      * Si la puntuación entra en el top 3, se pide el nombre y se guarda
@@ -284,7 +303,7 @@ public class Programa {
 
     }
 
-    /** 
+    /**
      * HU10 - Mostrar mejores puntuaciones y despedida.
      * Lee el archivo 'mejores.txt' en la carpeta resultados y muestra
      * el ranking de los usuarios con sus puntos.
