@@ -22,5 +22,5 @@
 --TT12: Crear una clase de solucion y leer el fichero de soluciones. -Alberto 
 --TT13: Añadir a los imports del programa principal los paquetes correpondientes - Mario e3f4d73
 --TD1: Manual de Instalación, describiendo los requerimientos para ejecutar la aplicación y los pasos necesarios para descargarla del repositorio, compilarla, ejecutarla y desinstalarla. - Mario aea0727
---TD2: Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación. - Mario y Nica
+--TD2: Manual de Usuario, con capturas de pantalla explicando con detalle el funcionamiento de la aplicación. - Mario y Nica cdb26ba
 --TD3: Manual del Programador, en formato HTML generado automáticamente por la herramienta javadoc.
