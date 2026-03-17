@@ -4,15 +4,15 @@ jdk-25\bin\javac -d compilados fuentes\com\iescastelar\*.java
 
 Ejecutar:
 
-jdk-25\bin\java -cp compilados Programa
+jdk-25\bin\java -cp compilados MemesMujeres
 
 compilar test
 
-..\jdk-25\bin\javac -cp "compilados;test/lib/junit-platform-console-standalone-1.9.2.jar" -d compilados test\com\iescastelar\ProgramaTest.java
+..\jdk-25\bin\javac -cp "compilados;test/lib/junit-platform-console-standalone-1.9.2.jar" -d compilados test\com\iescastelar\MemesMujeresTest.java
 
 ejecutar test
 
-..\jdk-25\bin\java -jar test/lib/junit-platform-console-standalone-1.9.2.jar --class-path compilados --select-class ProgramaTest
+..\jdk-25\bin\java -jar test/lib/junit-platform-console-standalone-1.9.2.jar --class-path compilados --select-class MemesMujeresTest
 
 JavaDoc:
 

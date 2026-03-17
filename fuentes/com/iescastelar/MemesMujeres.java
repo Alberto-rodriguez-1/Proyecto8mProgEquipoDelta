@@ -34,8 +34,9 @@ public class MemesMujeres {
             System.out.println("      BIENVENIDO A 8M MEMES.        ");
             System.out.println("-----------------------------------");
             System.out.println("1. Iniciar carga de memes.");
-            System.out.println("2. Salir.");
+            System.out.println("2. Mostrar Ranking.");
             System.out.println("3. Mostrar fuentes.");
+            System.out.println("4.Salir");
             System.out.print("Selecciona una opción: ");
 
             try {
@@ -43,13 +44,13 @@ public class MemesMujeres {
             } catch (NumberFormatException error) {
                 opcion = 0; // Opción invalida si no es un número
             }
-
+            verificarDatos();
+            prepararArchivos();
             switch (opcion) {
                 case 1:
                     for (int i = 0; i < 5; i++) {
                         System.out.println("\nEjecutando procesos...");
-                        verificarDatos();
-                        prepararArchivos();
+                        
                         try {
                             Solucion solucion = mostrarMemes();
                             System.out.print("Seleccione el numero de una de estas realidades:");
@@ -71,20 +72,22 @@ public class MemesMujeres {
                             System.out.println("Error al mostrar memes: " + e.getMessage());
                         }
                     }
-                    // List<String> mejores=leerPuntuaciones();
-                    // gestionarPuntuacion( puntuacion, teclado, mejores);
-                    opcion = 2;
                 case 2:
+                    mostrarPuntucacionF(puntuacion);
+                    List<Usuarios> resultados=leerResultados();
+                    gestionarPuntuacion(puntuacion,resultados);
                     mostrarRanking();
-                    System.out.println("Saliendo del programa...");
                     break;
                 case 3:
                     mostrarFuentes();
+                case 4:
+                    System.out.println("Saliendo del programa...");
+                    break;
                 default: // Por si alguna opcion no es la esperada
                     System.out.println("Opción no válida.");
                     break;
             }
-        } while (opcion != 2);
+        } while (opcion != 4);
 
         teclado.close();
     }
@@ -174,11 +177,20 @@ public class MemesMujeres {
      * Esta funcion lee el fichero de resultados para crear una lista de
      * puntuaciones
      */
-    /*
-     * public static void leerPuntuaciones(){
-     * 
-     * }
-     */
+    
+    public static List<Usuarios> leerResultados()throws IOException{
+        List<Usuarios> resultado=new ArrayList<>();
+        Path path = Paths.get("resultados", "mejores.txt");
+        List<String> datos = Files.readAllLines(path);
+        for(int i=0; i<datos.size();i++){
+            String[] trozos = datos.get(i).split(";");
+            String nombre=trozos[0];
+            Integer puntuacion=Integer.parseInt(trozos[1]);
+            Usuarios usuario= new Usuarios(nombre,puntuacion);
+            resultado.add(usuario);
+        }
+        return resultado;
+    }
     /**
      * Muestra un meme aleatorio junto con una lista de todas las realidades
      * numeradas
@@ -272,33 +284,45 @@ public class MemesMujeres {
         }
         return resultado;
     }
-
+     /**
+     * HU8
+     * Mostrar la puntuacion final
+     */
+    public static void mostrarPuntucacionF(Integer puntuacion){
+        System.out.println("Su puntuacion final fue: "+puntuacion);
+    }
     /**
      * HU9
      * Gestión de puntuaciones y ranking.
      * Si la puntuación entra en el top 3, se pide el nombre y se guarda
      * en el fichero mejores.txt usando APPEND para añadir al final.
      */
-    public static void gestionarPuntuacion(Integer puntuacionUsuario, Scanner scanner, List<String> mejores)
+    public static void gestionarPuntuacion(Integer puntuacionUsuario, List<Usuarios> mejores)
             throws IOException {
+                Scanner scanner=new Scanner(System.in);
         // Miramos si la puntuación es lo suficientemente alta para entrar en el top
-        Boolean esMejor = mejores.size() < 3
-                || puntuacionUsuario > Integer.parseInt(mejores.get(mejores.size() - 1).split(";")[1]);
+       Boolean esMejor = mejores.size() < 3 ||
+        (mejores.size() > 0 && puntuacionUsuario > mejores.get(mejores.size() - 1).getPuntuacion());
 
         if (esMejor) {
             // Pillamos el nombre del usuario por consola
             System.out.print("Felicidades has entrado en el top. Introduce un nombre para ser registrado:");
             String nombre = scanner.nextLine().trim();
             // Lo añadimos a nuestra lista en memoria
-            mejores.add(nombre + ";" + puntuacionUsuario);
-
             // Mantenemos solo los 3 mejores
-            if (mejores.size() > 3)
-                mejores.remove(mejores.size() - 1);
-
+          if (mejores.size() == 0 || puntuacionUsuario > mejores.get(mejores.size() - 1).getPuntuacion()) {
+    if (mejores.size() == 3) {
+        mejores.remove(mejores.size() - 1);
+    }
+    Usuarios user = new Usuarios(nombre, puntuacionUsuario);
+    mejores.add(user);
+}
             // Guardamos la lista actualizada en el disco
-            Files.write(Paths.get("resultados/mejores.txt"), mejores,
-                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            List<String> lienas=new ArrayList<>();
+            for(Usuarios u:mejores){
+                lienas.add(u.toString());
+            }
+            Files.write(Paths.get("resultados/mejores.txt"), lienas, StandardOpenOption.CREATE);
         }
 
     }
